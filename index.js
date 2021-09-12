@@ -8,13 +8,17 @@ function calculateProfitAndLoss(initialPrice, noOfStocks, currentPrice) {
   if (initialPrice > currentPrice) {
     let loss = (initialPrice - currentPrice) * noOfStocks;
     let lossPercentage = (loss / initialPrice) * 100;
-    showOutputMsg(`Loss is ₹${loss} and Loss Percentage is ${lossPercentage}%`);
+    showOutputMsg(
+      `Loss is ₹${loss} and Loss Percentage is ${lossPercentage}%`,
+      "red"
+    );
   } else if (currentPrice > initialPrice) {
     let profit = ((currentPrice - initialPrice) * noOfStocks).toFixed(2);
 
     let profitPercentage = ((profit / initialPrice) * 100).toFixed(2);
     showOutputMsg(
-      `The Profit is ₹${profit} and the profit percentage is ${profitPercentage}%`
+      `The Profit is ₹${profit} and the profit percentage is ${profitPercentage}%`,
+      "green"
     );
   } else {
     showOutputMsg("No pain No gain");
@@ -40,12 +44,9 @@ function validate(ip, qty, cp) {
   }
 }
 
-function showOutputMsg(msg) {
+function showOutputMsg(msg, color) {
   outputDiv.innerText = msg;
+  outputDiv.style.color = color;
 }
 
 submitBtn.addEventListener("click", submitHandler);
-
-// calculateProfitAndLoss(10, 10, 5);
-// calculateProfitAndLoss(10, 10, 40);
-// calculateProfitAndLoss(10, 10, 10);
