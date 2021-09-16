@@ -31,9 +31,8 @@ function submitHandler() {
   let ip = Number(initialPrice.value);
   let qty = Number(noOfStocks.value);
   let cp = Number(currentPrice.value);
-
-  calculateProfitAndLoss(ip, qty, cp);
   validate(ip, qty, cp);
+  calculateProfitAndLoss(ip, qty, cp);
 }
 
 function validate(ip, qty, cp) {
@@ -43,6 +42,9 @@ function validate(ip, qty, cp) {
     showOutputMsg(" How can I Calculate without the  Quantity :(");
   } else if (cp == "") {
     showOutputMsg("Please Enter the Current Price to Calculate");
+  }
+  if (Math.sign(ip) === -1 || Math.sign(qty) === -1 || Math.sign(cp) === -1) {
+    showOutputMsg("Please Enter Positive Values and Be positive ");
   }
 }
 
