@@ -8,7 +8,11 @@ function calculateProfitAndLoss(initialPrice, noOfStocks, currentPrice) {
   if (initialPrice > 0 && noOfStocks > 0 && currentPrice > 0) {
     if (initialPrice > currentPrice) {
       let loss = (initialPrice - currentPrice) * noOfStocks;
-      let lossPercentage = ((loss / initialPrice) * 100).toFixed(2);
+      // let lossPercentage = ((loss / initialPrice) * 100).toFixed(2);
+      let lossPercentage = (
+        ((initialPrice - currentPrice) * 100) /
+        initialPrice
+      ).toFixed(2);
       showOutputMsg(
         `Loss is ₹${loss} and Loss Percentage is ${lossPercentage}%`,
         "red"
@@ -16,7 +20,11 @@ function calculateProfitAndLoss(initialPrice, noOfStocks, currentPrice) {
     } else if (currentPrice > initialPrice) {
       let profit = ((currentPrice - initialPrice) * noOfStocks).toFixed(2);
 
-      let profitPercentage = ((profit / initialPrice) * 100).toFixed(2);
+      // let profitPercentage = ((profit / initialPrice) * 100).toFixed(2);
+      let profitPercentage = (
+        ((currentPrice - initialPrice) * 100) /
+        initialPrice
+      ).toFixed(2);
       showOutputMsg(
         `The Profit is ₹${profit} and the profit percentage is ${profitPercentage}%`,
         "green"
